@@ -11,25 +11,20 @@
 
 -   <a href="https://ak.hypergryph.com/">卧槽粥。
 -   <a href="https://qm.qq.com/q/J3ZFM6Snee">QQ
-<span id="copyText" onclick="copyToClipboard()">我的邮箱: boxy2699@163.com</span>
+<span id="copyText" <div style="overflow: hidden; max-width: 300px; display: inline-block;">
+  <span id="copyText" style="cursor: pointer; padding: 5px; border: 1px solid #ccc; border-radius: 3px;" onclick="copyToClipboard()">我的邮箱: boxy2699@163.com</span>
+</div>
 
 <script>
 function copyToClipboard() {
-    // 要复制的文本
-    const textToCopy = "这是要复制的内容";
-    // 使用 Clipboard API 复制
-    navigator.clipboard.writeText(textToCopy).then(() => {
-        // 复制成功后修改显示文字
-        const element = document.getElementById("copyText");
-        element.innerText = "已复制!";
-        // 可选：过几秒后恢复原文字
-        setTimeout(() => {
-            element.innerText = "我的邮箱: boxy2699@163.com";
-        }, 2000); // 2秒后恢复
-    }).catch(err => {
-        console.error("复制失败: ", err);
-        document.getElementById("copyText").innerText = "复制失败";
-    });
+  const text = "boxy2699@163.com"; // 要复制的内容
+  navigator.clipboard.writeText(text).then(() => {
+    const elem = document.getElementById("copyText");
+    elem.textContent = "已复制!";
+    setTimeout(() => elem.textContent = "我的邮箱: boxy2699@163.com", 2000);
+  }).catch(() => {
+    document.getElementById("copyText").textContent = "复制失败";
+  });
 }
 </script>
 

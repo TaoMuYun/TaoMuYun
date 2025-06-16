@@ -1,4 +1,4 @@
-<img align="right" src="https://count.getloli.com/get/@:QcxFlora?theme=rule3445594408">
+<img align="right" src="https://count.getloli.com/get/@:QcxFlora?theme=rule">
 
 ## 普通在读学生—伯希Boxy
 

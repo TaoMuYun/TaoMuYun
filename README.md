@@ -20,4 +20,4 @@
 <img align="right" src="https://api.kxzjoker.cn/api/wallhere?type=bs">
 
 
-<a href="https://ak.hypergryph.com/">小黑子食不食油饼
+<a href="http://cxk.fan/api.php">小黑子食不食油饼

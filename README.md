@@ -19,3 +19,5 @@
 ### **今日份美图**
 <img align="right" src="https://api.kxzjoker.cn/api/wallhere?type=bs">
 
+
+<a href="https://ak.hypergryph.com/">小黑子食不食油饼

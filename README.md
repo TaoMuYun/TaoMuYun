@@ -14,6 +14,6 @@
 -   <a href="mailto:boxy2699@163.com">我的邮箱
 -   > boxy2699@163.com
 
-## **今日份美图**
+### **今日份美图**
 <img align="right" src="https://api.kxzjoker.cn/api/wallhere?type=bs">
 

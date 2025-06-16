@@ -8,7 +8,8 @@
 -   <a href="https://ak.hypergryph.com/">卧槽粥!
 -   >UID:585991431
 -   <a href="https://qm.qq.com/q/J3ZFM6Snee">我的QQ
--   <a href="boxy2699@163.com">我的邮箱
+-   <a href="mailto:boxy2699@163.com">我的邮箱
+-   > boxy2699@163.com
 
 ### **今日份美图**
 <img align="right" src="https://api.kxzjoker.cn/api/wallhere?type=bs">

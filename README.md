@@ -19,5 +19,7 @@
 ### **今日份美图**
 <img align="right" src="https://api.kxzjoker.cn/api/wallhere?type=bs">
 
+### **今日份视频**
+<img align="right" src="https://v2.api-m.com/api/meinv?return=302">
 
 <a href="http://cxk.fan/api.php">小黑子食不食油饼

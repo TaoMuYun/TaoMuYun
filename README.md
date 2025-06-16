@@ -14,10 +14,10 @@
 -   <a href="mailto:boxy2699@163.com">我的邮箱
 -   > boxy2699@163.com
     >
-### **今日份美图**
+#### **今日份美图**
 <img align="right" src="https://api.kxzjoker.cn/api/wallhere?type=bs">
 
-#### Github 活跃度
+##### Github 活跃度
 
 [![](https://activity-graph.herokuapp.com/graph?username=Minori-ty&theme=dracula)](https://github.com/ashutosh00710/github-readme-activity-graph)
 ![Minori-ty's github stats](https://github-readme-stats.vercel.app/api?username=QcxFlora&show_icons=true&theme=vue)

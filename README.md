@@ -15,12 +15,10 @@
 -   > boxy2699@163.com
 
 ### **今日份美图**
-<div style="overflow: hidden; max-width: 250px; margin-bottom: 20px;">
-  <img align="right" alt="PNG" src="https://api.kxzjoker.cn/api/wallhere?type=bs" style="max-width: 100%; height: auto;" />
-</div>
+<img align="right" src="https://api.kxzjoker.cn/api/wallhere?type=bs">
 
 ## Github 活跃度
-
-[!](https://github.com/ashutosh00710/github-readme-activity-graph)
+[![](https://activity-graph.herokuapp.com/graph?username=Minori-ty&theme=dracula)](https://github.com/ashutosh00710/github-readme-activity-graph)
 ![Minori-ty's github stats](https://github-readme-stats.vercel.app/api?username=QcxFlora&show_icons=true&theme=vue)
 ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=QcxFlora&langs_count=6)
+![](https://github-readme-stats.vercel.app/api/top-langs/?username=QcxFlora&layout=compact&langs_count=6)

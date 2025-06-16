@@ -9,7 +9,7 @@
  <img align="right" alt="GIF" src="output.gif" width="430" height="100%" />
 
 
--   <a href="https://ak.hypergryph.com/">卧槽粥。~ UID:585991431 ~
+-   <a href="https://ak.hypergryph.com/">卧槽粥。 ~~ UID:585991431 ~~
 -   <a href="https://qm.qq.com/q/J3ZFM6Snee">我的QQ
 
 -   <a href="mailto:boxy2699@163.com">我的邮箱

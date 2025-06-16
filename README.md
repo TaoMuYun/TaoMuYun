@@ -4,7 +4,7 @@
 
 热爱绘画、热爱折腾。学习经验15年。喜欢参与一些开源项目的讨论。
 
-### **社交主页：**
+### **社交：**
 
  <img align="right" alt="GIF" src="./images/code.gif" width="430" height="100%" />
 
@@ -13,6 +13,9 @@
 -   <a href="https://qm.qq.com/q/J3ZFM6Snee">我的QQ
 
 -   <a href="mailto:boxy2699@163.com">我的邮箱
+
+### **今日份美图**
+<img align="right" alt="PNG" src="https://api.kxzjoker.cn/api/wallhere?type=bs" width="430" height="100%" />
 
 ### Github 活跃度
 

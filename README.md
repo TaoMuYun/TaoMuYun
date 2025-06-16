@@ -10,24 +10,9 @@
 
 
 -   <a href="https://ak.hypergryph.com/">卧槽粥。
--   <a href="https://qm.qq.com/q/J3ZFM6Snee">QQ
+-   <a href="https://qm.qq.com/q/J3ZFM6Snee">我的QQ
 
-<span id="copyText" <div style="overflow: hidden; max-width: 300px; display: inline-block;">
-  <span id="copyText" style="cursor: pointer; padding: 5px; border: 1px solid #ccc; border-radius: 3px;" onclick="copyToClipboard()">我的邮箱: boxy2699@163.com</span>
-</div>
-
-<script>
-function copyToClipboard() {
-  const text = "boxy2699@163.com"; // 要复制的内容
-  navigator.clipboard.writeText(text).then(() => {
-    const elem = document.getElementById("copyText");
-    elem.textContent = "已复制!";
-    setTimeout(() => elem.textContent = "我的邮箱: boxy2699@163.com", 2000);
-  }).catch(() => {
-    document.getElementById("copyText").textContent = "复制失败";
-  });
-}
-</script>
+-   <a href="boxy2699@163.com">我的邮箱
 
 ### Github 活跃度
 

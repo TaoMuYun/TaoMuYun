@@ -15,9 +15,7 @@
 -   <a href="mailto:boxy2699@163.com">我的邮箱
 
 ### **今日份美图**
-<div style="overflow: hidden; max-width: 250px;">
-  <img align="right" alt="PNG" src="https://api.kxzjoker.cn/api/wallhere?type=bs?t=<?=Math.random()?>" style="max-width: 100%; height: auto;" />
-</div>
+<img align="right" src="https://api.kxzjoker.cn/api/wallhere?type=bs">
 
 ### Github 活跃度
 

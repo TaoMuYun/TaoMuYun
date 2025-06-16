@@ -6,7 +6,7 @@
 
 ### **社交：**
 
- <img align="right" alt="GIF" src="code.gif" width="430" height="100%" />
+ <img align="right" alt="GIF" src="output.gif" width="430" height="100%" />
 
 
 -   <a href="https://ak.hypergryph.com/">卧槽粥。

@@ -7,7 +7,7 @@
 ### **社交：**
 <img align="right" src="output.gif">
 
-src="https://avatars.githubusercontent.com/u/193598498?v=4" style="height: 18px; width: 18px; border-radius: 75%; margin-right: 6px; object-fit: cover;">
+<img src="https://avatars.githubusercontent.com/u/193598498?v=4" style="height: 18px; width: 18px; border-radius: 50%; margin-right: 6px; object-fit: cover;" />
 
 -   <a href="https://ak.hypergryph.com/">卧槽粥!
 -   >UID:585991431

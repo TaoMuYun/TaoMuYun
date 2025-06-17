@@ -24,13 +24,23 @@ jobs:
           IMAGE_NAME="美图.png"
 
           echo "Attempting to download image from: $IMAGE_URL"
+
+          # --- 显式删除旧文件（如果存在）---
+          if [ -f "$IMAGE_NAME" ]; then
+            echo "Deleting existing $IMAGE_NAME..."
+            rm "$IMAGE_NAME"
+          fi
+
+          # 使用 curl 下载图片
           curl -f -s -L -o "$IMAGE_NAME" "$IMAGE_URL"
 
+          # 检查 curl 命令的退出状态码
           if [ $? -ne 0 ]; then
             echo "::error::Image download failed for $IMAGE_URL. Curl exited with non-zero status."
             exit 1
           fi
 
+          # 再次检查图片文件是否存在且非空
           if [ ! -s "$IMAGE_NAME" ]; then
             echo "::error::Downloaded image file $IMAGE_NAME is empty or does not exist."
             exit 1
@@ -41,19 +51,18 @@ jobs:
       - name: Commit and push image
         if: success() && steps.download_image.outputs.image_downloaded == 'true'
         run: |
+          IMAGE_NAME="美图.png" # 再次定义图片名称
+
           # 配置 Git 用户信息
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # 将当前目录的所有更改添加到暂存区
-          # 这将确保美图.png被添加，即使变量解析有问题
-          git add .
+          # 强制添加文件到暂存区，确保即使内容相同也记录为修改
+          # git add -f 可以强制添加被忽略的文件，但这里主要是确保文件被暂存
+          git add "$IMAGE_NAME"
 
-          # 检查暂存区是否有实际变化（文件内容是否与HEAD版本不同）
-          if ! git diff --cached --quiet; then
-            git commit -m "chore: Update daily image (美图.png) [skip ci]"
-            git push
-            echo "美图.png updated and pushed."
-          else
-            echo "美图.png has no changes compared to HEAD. Skipping commit and push."
-          fi
+          # 无论内容是否变化，都进行提交和推送
+          # 移除 git diff --cached --quiet 判断
+          git commit -m "chore: Update daily image (美图.png) [skip ci]"
+          git push
+          echo "美图.png updated and pushed."

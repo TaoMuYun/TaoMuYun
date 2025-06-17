@@ -2,11 +2,11 @@
 <img align="right" src="https://count.getloli.com/get/@:QcxFlora?theme=rule"><br><br><br><br>
 ## **名看我主页的用户！**
 
-## 普通在读学生—伯希Boxy
+# 普通在读学生—伯希Boxy
 
 热爱绘画🎨、热爱折腾🔧。学习经验15年。喜欢参与一些开源项目的讨论。
 
-### **社交：**
+## **社交：**
 <img align="right" src="output.gif">
 
 

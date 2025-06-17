@@ -24,10 +24,9 @@
 <img align="right" src="https://api.kxzjoker.cn/api/wallhere?type=bs">
 
 <div style="clear: both;"></div> 
-<br> 
 
+<hr style="margin-top: 1em;"> 
 
---- 
 
 
 <a href="http://cxk.fan/api.php">小黑子食不食油饼

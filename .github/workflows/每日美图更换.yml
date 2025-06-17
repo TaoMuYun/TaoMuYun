@@ -28,7 +28,6 @@ jobs:
           echo "Attempting to download image from: $IMAGE_URL"
 
           # --- 清理旧的图片文件 ---
-          # 删除所有以 "美图" 开头，以 ".png" 结尾的图片文件
           echo "Cleaning up old image files (美图*.png)..."
           rm -f 美图*.png
 
@@ -67,29 +66,20 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
           # --- 更新 README.md 文件 ---
-          # 使用 sed 命令替换 README.md 中 <img> 标签的 src 属性
-          # 匹配 src="美图[0-9]*\.png" (美图后跟0个或多个数字，然后是.png)
-          # 替换为 src="新的带时间戳的图片文件名"
           sed -i -E "s|src=\"美图[0-9]*\.png\"|src=\"${NEW_IMAGE_NAME}\"|" README.md
           echo "README.md updated to reference: ${NEW_IMAGE_NAME}"
 
-          # 添加新图片文件和修改后的 README.md 到暂存区
-          # 使用 git add -A 来确保所有更改（包括删除旧图片）都被暂存
+          # 添加所有更改到暂存区
           git add -A
 
-          # 检查是否有实际更改，避免空提交
-          # 重新引入这个检查，但放在 git add -A 之后
-          if git diff --cached --quiet; then
-            echo "No changes to commit (image content or README.md did not change). Skipping commit and push."
-            exit 0 # 退出当前步骤，标记为成功
-          fi
+          # 强制提交更改，无论是否有内容变化
+          # 这样可以确保工作区和暂存区是干净的，以便 rebase 顺利进行
+          git commit -m "chore: Update daily image (${NEW_IMAGE_NAME}) and README.md [skip ci]"
 
-          # 在提交前拉取最新代码并rebase，解决推送冲突
-          # 确保工作区和暂存区是干净的，以便 rebase 顺利进行
+          # 在提交后拉取最新代码并rebase，解决推送冲突
+          # 此时本地已经有了一个提交，rebase 应该能顺利进行
           git pull --rebase origin main
 
-          # 提交更改
-          git commit -m "chore: Update daily image (${NEW_IMAGE_NAME}) and README.md [skip ci]"
           # 推送更改
           git push
           echo "Image and README.md updated and pushed successfully."

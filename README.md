@@ -31,11 +31,7 @@
 ### **<a href="https://api.kxzjoker.cn/api/wallhere?type=bs">今日份美图**
 <img style="float: right;" src="美图202506171638.png">
 <div overflow: hidden; font-size: 0; line-height: 0;">&nbsp;</div>
-<div align="right">
+<div align="right"><br>
 
-   
-   
-   
-   
    <a href="http://cxk.fan/api.php">小黑子食不食食油饼</a>
 </div>

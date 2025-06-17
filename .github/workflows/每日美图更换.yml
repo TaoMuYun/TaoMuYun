@@ -1,12 +1,12 @@
-name: 每日美图更换
+name: 每日美图更新
 
 on:
   schedule:
-    - cron: '0 0 * * *'
-  workflow_dispatch:
+    - cron: '0 0 * * *' # 每天 UTC 时间午夜0点运行
+  workflow_dispatch: # 允许手动触发
 
 permissions:
-  contents: write
+  contents: write # 授予写入仓库内容的权限
 
 jobs:
   update-image:
@@ -20,50 +20,80 @@ jobs:
       - name: Download and save image
         id: download_image
         run: |
+          # 生成带时间戳的新图片文件名
+          TIMESTAMP=$(date +%Y%m%d%H%M)
+          NEW_IMAGE_NAME="美图${TIMESTAMP}.png"
           IMAGE_URL="https://api.kxzjoker.cn/api/wallhere?type=bs"
-          IMAGE_NAME="美图.png"
 
           echo "Attempting to download image from: $IMAGE_URL"
 
-          # --- 显式删除旧文件（如果存在）---
-          if [ -f "$IMAGE_NAME" ]; then
-            echo "Deleting existing $IMAGE_NAME..."
-            rm "$IMAGE_NAME"
-          fi
+          # --- 清理旧的图片文件 ---
+          # 删除所有以 "美图" 开头，以 ".png" 结尾的图片文件
+          echo "Cleaning up old image files (美图*.png)..."
+          rm -f 美图*.png
 
-          # 使用 curl 下载图片
-          # 添加 -H "Cache-Control: no-cache" 和 -H "Pragma: no-cache" 尝试绕过API端的缓存
-          # 添加 -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36" 模拟浏览器User-Agent
-          curl -f -s -L -o "$IMAGE_NAME" -H "Cache-Control: no-cache" -H "Pragma: no-cache" -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36" "$IMAGE_URL"
+          # 使用 curl 下载图片，并保存为新的带时间戳的名称
+          # -f/--fail: HTTP 错误时失败
+          # -s/--silent: 静默模式
+          # -L/--location: 遵循重定向
+          # -o/--output: 指定输出文件名
+          # -H "Cache-Control: no-cache" 和 -H "Pragma: no-cache" 尝试绕过API端的缓存
+          # -A 模拟浏览器User-Agent
+          curl -f -s -L -o "$NEW_IMAGE_NAME" -H "Cache-Control: no-cache" -H "Pragma: no-cache" -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36" "$IMAGE_URL"
 
           # 检查 curl 命令的退出状态码
           if [ $? -ne 0 ]; then
             echo "::error::Image download failed for $IMAGE_URL. Curl exited with non-zero status."
-            exit 1
+            exit 1 # 退出工作流，标记为失败
           fi
 
           # 再次检查图片文件是否存在且非空
-          if [ ! -s "$IMAGE_NAME" ]; then
-            echo "::error::Downloaded image file $IMAGE_NAME is empty or does not exist."
-            exit 1
+          if [ ! -s "$NEW_IMAGE_NAME" ]; then # -s 检查文件是否存在且大小大于0
+            echo "::error::Downloaded image file $NEW_IMAGE_NAME is empty or does not exist."
+            exit 1 # 退出工作流，标记为失败
           fi
-          echo "Image downloaded successfully as $IMAGE_NAME."
+          echo "Image downloaded successfully as $NEW_IMAGE_NAME."
 
-          # --- 计算并打印图片的MD5哈希值 ---
-          MD5_HASH=$(md5sum "$IMAGE_NAME" | awk '{print $1}')
+          # 计算并打印图片的MD5哈希值（用于调试）
+          MD5_HASH=$(md5sum "$NEW_IMAGE_NAME" | awk '{print $1}')
           echo "Downloaded image MD5 hash: $MD5_HASH"
+
+          # 将新图片名称作为输出传递给后续步骤
+          echo "new_image_name=$NEW_IMAGE_NAME" >> $GITHUB_OUTPUT
           echo "image_downloaded=true" >> $GITHUB_OUTPUT
 
-      - name: Commit and push image
+      - name: Commit and push changes
+        # 只有当上一步（下载图片）成功时才运行此步骤
         if: success() && steps.download_image.outputs.image_downloaded == 'true'
         run: |
-          IMAGE_NAME="美图.png"
+          # 获取上一步生成的新图片名称
+          NEW_IMAGE_NAME="${{ steps.download_image.outputs.new_image_name }}"
 
+          # 配置 Git 用户信息
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git add "$IMAGE_NAME"
+          # --- 更新 README.md 文件 ---
+          # 使用 sed 命令替换 README.md 中 <img> 标签的 src 属性
+          # 匹配 src="美图[0-9]*.png" (美图后跟0个或多个数字，然后是.png)
+          # 替换为 src="新的带时间戳的图片文件名"
+          sed -i -E "s|src=\"美图[0-9]*\.png\"|src=\"${NEW_IMAGE_NAME}\"|" README.md
+          echo "README.md updated to reference: ${NEW_IMAGE_NAME}"
 
-          git commit -m "chore: Update daily image (美图.png) [skip ci]"
+          # 添加新图片文件和修改后的 README.md 到暂存区
+          git add "$NEW_IMAGE_NAME" README.md
+
+          # 检查是否有实际更改，避免空提交
+          if git diff --cached --quiet; then
+            echo "No changes to commit (image content or README.md did not change). Skipping commit and push."
+            exit 0 # 退出当前步骤，标记为成功
+          fi
+
+          # 在提交前拉取最新代码并rebase，解决推送冲突
+          git pull --rebase origin main
+
+          # 提交更改
+          git commit -m "chore: Update daily image (${NEW_IMAGE_NAME}) and README.md [skip ci]"
+          # 推送更改
           git push
-          echo "美图.png updated and pushed."
+          echo "Image and README.md updated and pushed successfully."

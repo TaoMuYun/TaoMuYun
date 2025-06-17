@@ -21,7 +21,7 @@
 ## **看看视频**
 <a href="https://v2.api-m.com/api/meinv?return=302">小姐姐~<br>
 ### **<a href="https://api.kxzjoker.cn/api/wallhere?type=bs">今日份美图**
-<img style="float: right;" src="https://api.kxzjoker.cn/api/wallhere?type=bs=202506171600">
+<img style="float: right;" src="美图.png">
 
 <div style="clear: both; height: 0em;"></div> 
 

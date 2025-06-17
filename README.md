@@ -23,6 +23,8 @@
 ### **<a href="https://api.kxzjoker.cn/api/wallhere?type=bs">今日份美图**
 <img align="right" src="https://api.kxzjoker.cn/api/wallhere?type=bs">
 
-<div style="clear: both; padding-top: 1em; border-bottom: 1px solid #eaecef; margin-bottom: 1em;">&nbsp;</div> 
+<div style="clear: both; height: 1em;"></div> <!-- 1. 清除浮动并提供1em的空白 -->
+
+<div style="height: 1px; background-color: #d0d0d0; margin-bottom: 1em;"></div> <!-- 2. 自定义分割线，使用背景色，并提供1em的底部留白 -->
 
 <a href="http://cxk.fan/api.php">小黑子食不食食油饼

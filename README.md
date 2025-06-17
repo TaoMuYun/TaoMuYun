@@ -14,8 +14,8 @@
 自然语言开发，丢入任意ai中编译，错误率随ai实力而浮动👍👍👍
 
 ## **社交：**
-<img align="center" src="output.gif">
-
+<div align="center">
+<img src="output.gif">
 
 
 -   <img src="Amiya.png" style="height: 18px; width: 18px; border-radius: 50%; margin-right: 6px; object-fit: cover;" /><a href="https://ak.hypergryph.com/">卧槽粥!

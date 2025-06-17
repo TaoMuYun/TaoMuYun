@@ -25,7 +25,7 @@
 
 <div style="clear: both; height: 1em;"></div> <!-- 这一行是关键：清除浮动并创建1em的高度 -->
 
-<div style="border-bottom: 1px solid #eaecef; margin-bottom: 1em;"></div>
+# 
 
 <!-- 您原来为了推开内容而添加的大量 <br> 标签现在可以全部删除了 -->
 

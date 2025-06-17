@@ -20,8 +20,8 @@
 
 ## **看看视频**
 <a href="https://v2.api-m.com/api/meinv?return=302">小姐姐~<br>
-### **<a href="https://api.kxzjoker.cn/api/wallhere?type=bs">今日份美图**
-<img style="float: right;" src="https://api.kxzjoker.cn/api/wallhere?type=bshttps://api.kxzjoker.cn/api/wallhere?type=bs">
+### **<a href="https://api.kxzjoker.cn/api/wallhere?type=bshttps://api.kxzjoker.cn/api/wallhere?type=bscachebuster=202506171530">今日份美图**
+<img style="float: right;" src="https://api.kxzjoker.cn/api/wallhere?type=bshttps://api.kxzjoker.cn/api/wallhere?type=bshttps://api.kxzjoker.cn/api/wallhere?type=bscachebuster=202506171530">
 
 <div style="clear: both; height: 0em;"></div> 
 

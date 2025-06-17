@@ -32,7 +32,9 @@ jobs:
           fi
 
           # 使用 curl 下载图片
-          curl -f -s -L -o "$IMAGE_NAME" "$IMAGE_URL"
+          # 添加 -H "Cache-Control: no-cache" 和 -H "Pragma: no-cache" 尝试绕过API端的缓存
+          # 添加 -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36" 模拟浏览器User-Agent
+          curl -f -s -L -o "$IMAGE_NAME" -H "Cache-Control: no-cache" -H "Pragma: no-cache" -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36" "$IMAGE_URL"
 
           # 检查 curl 命令的退出状态码
           if [ $? -ne 0 ]; then
@@ -46,23 +48,22 @@ jobs:
             exit 1
           fi
           echo "Image downloaded successfully as $IMAGE_NAME."
+
+          # --- 计算并打印图片的MD5哈希值 ---
+          MD5_HASH=$(md5sum "$IMAGE_NAME" | awk '{print $1}')
+          echo "Downloaded image MD5 hash: $MD5_HASH"
           echo "image_downloaded=true" >> $GITHUB_OUTPUT
 
       - name: Commit and push image
         if: success() && steps.download_image.outputs.image_downloaded == 'true'
         run: |
-          IMAGE_NAME="美图.png" # 再次定义图片名称
+          IMAGE_NAME="美图.png"
 
-          # 配置 Git 用户信息
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # 强制添加文件到暂存区，确保即使内容相同也记录为修改
-          # git add -f 可以强制添加被忽略的文件，但这里主要是确保文件被暂存
           git add "$IMAGE_NAME"
 
-          # 无论内容是否变化，都进行提交和推送
-          # 移除 git diff --cached --quiet 判断
           git commit -m "chore: Update daily image (美图.png) [skip ci]"
           git push
           echo "美图.png updated and pushed."

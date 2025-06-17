@@ -1,4 +1,4 @@
-name: 美图更换 # 名称
+name: 美图更换 # 工作流名称
 
 on:
   schedule:
@@ -7,8 +7,8 @@ on:
     - cron: '0 0 * * *'
   workflow_dispatch: # 允许手动触发此工作流
 
-permissions: # <--- 明确授予工作流写入权限
-  contents: write # <--- 允许工作流修改仓库内容
+permissions: # 明确授予工作流写入权限
+  contents: write # 允许工作流修改仓库内容
 
 jobs:
   update-image:
@@ -17,24 +17,27 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          # 提供 token，以便工作流可以推送更改
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Get current date for cache buster
         id: date
+        # 使用新的语法来设置输出变量
         run: echo "today=$(date +'%Y%m%d%H%M')" >> $GITHUB_OUTPUT # 精确到分钟，确保每次都不同
 
       - name: Update README.md with new image URL
         run: |
-          # 定义旧的图片URL模式（不带缓存破坏器）
-          OLD_URL_PATTERN="https://api.kxzjoker.cn/api/wallhere?type=bs"
-          # 定义新的图片URL，添加当前日期作为缓存破坏器
-          NEW_URL="${OLD_URL_PATTERN}&cachebuster=${{ steps.date.outputs.today }}"
+          # 定义基础URL部分
+          BASE_URL="https://api.kxzjoker.cn/api/wallhere?type=bs"
+          # 定义一个正则表达式，匹配基础URL和其后直到下一个双引号的所有字符
+          # 这会捕获任何现有的cachebuster或其他参数，确保替换整个URL
+          OLD_URL_REGEX="${BASE_URL}[^\"]*"
+          # 定义新的URL，包含更新的cachebuster
+          NEW_URL="${BASE_URL}&cachebuster=${{ steps.date.outputs.today }}"
 
           # 使用sed命令替换README.md中的图片URL
-          # 注意：sed命令中的斜杠需要转义，因为URL中包含斜杠
-          # 确保只替换您想要更新的那个图片链接
-          sed -i "s|${OLD_URL_PATTERN}|${NEW_URL}|g" README.md
+          # 's|OLD_REGEX|NEW_URL|g' 表示用NEW_URL替换所有匹配OLD_REGEX的地方
+          # 注意：这里OLD_URL_REGEX是一个正则表达式，它会匹配整个URL，包括旧的cachebuster
+          sed -i "s|${OLD_URL_REGEX}|${NEW_URL}|g" README.md
 
           # 检查是否有更改，如果有，则提交并推送
           if ! git diff --quiet README.md; then

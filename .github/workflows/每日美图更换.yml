@@ -1,4 +1,4 @@
-name: 每日美图更新
+name: 每日美图更换
 
 on:
   schedule:

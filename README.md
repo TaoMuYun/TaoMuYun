@@ -15,7 +15,7 @@
    ><img src="https://github.com/QcxFlora/QcxFlora/blob/main/TuTu.png" style="height: 18px; width: 18px; border-radius: 50%; margin-right: 6px; object-fit: cover;" />UID:585991431
 -   <img src="https://github.com/QcxFlora/QcxFlora/blob/main/QQ.png" style="height: 18px; width: 18px; border-radius: 50%; margin-right: 6px; object-fit: cover;" /><a href="https://qm.qq.com/q/J3ZFM6Snee">我的QQ
    ><img src="https://avatars.githubusercontent.com/u/197634234?v=4" style="height: 18px; width: 18px; border-radius: 50%; margin-right: 6px; object-fit: cover;" />3445594408
--   <img src="https://pp.myapp.com/ma_icon/0/icon_240284_1749776149/96" style="height: 18px; width: 18px; border-radius: 50%; margin-right: 6px; object-fit: cover;" /><a href="mailto:boxy2699@163.com">我的邮箱
+-   <img src="https://github.com/QcxFlora/QcxFlora/blob/main/wyyyx.png" style="height: 18px; width: 18px; border-radius: 50%; margin-right: 6px; object-fit: cover;" /><a href="mailto:boxy2699@163.com">我的邮箱
    ><img src="https://avatars.githubusercontent.com/u/197634234?v=4" style="height: 18px; width: 18px; border-radius: 50%; margin-right: 6px; object-fit: cover;" />boxy2699@163.com
 
 ## **今日份视频**

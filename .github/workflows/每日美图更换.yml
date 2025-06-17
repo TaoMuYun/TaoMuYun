@@ -1,13 +1,12 @@
-name: 每日美图更换 # 工作流名称
+name: 每日美图更换
 
 on:
   schedule:
-    # 每天 UTC 时间 00:00 运行 (北京时间上午 8:00)
     - cron: '0 0 * * *'
-  workflow_dispatch: # 允许手动触发此工作流
+  workflow_dispatch:
 
-permissions: # 明确授予工作流写入权限
-  contents: write # 允许工作流修改仓库内容
+permissions:
+  contents: write
 
 jobs:
   update-image:
@@ -19,36 +18,42 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Download and save image
+        id: download_image
         run: |
           IMAGE_URL="https://api.kxzjoker.cn/api/wallhere?type=bs"
-          IMAGE_NAME="美图.png" # 定义图片名称
+          IMAGE_NAME="美图.png"
 
-          # 使用 curl 下载图片，并保存为指定名称
-          # -s 静默模式，不显示进度或错误信息
-          # -L 遵循重定向
-          # -o 指定输出文件名
-          curl -s -L -o "$IMAGE_NAME" "$IMAGE_URL"
+          echo "Attempting to download image from: $IMAGE_URL"
+          curl -f -s -L -o "$IMAGE_NAME" "$IMAGE_URL"
 
-          # 检查图片是否成功下载
-          if [ ! -f "$IMAGE_NAME" ]; then
-            echo "Error: Image download failed."
+          if [ $? -ne 0 ]; then
+            echo "::error::Image download failed for $IMAGE_URL. Curl exited with non-zero status."
+            exit 1
+          fi
+
+          if [ ! -s "$IMAGE_NAME" ]; then
+            echo "::error::Downloaded image file $IMAGE_NAME is empty or does not exist."
             exit 1
           fi
           echo "Image downloaded successfully as $IMAGE_NAME."
+          echo "image_downloaded=true" >> $GITHUB_OUTPUT
 
       - name: Commit and push image
+        if: success() && steps.download_image.outputs.image_downloaded == 'true'
         run: |
           # 配置 Git 用户信息
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # 检查文件是否有变化，如果有，则提交并推送
-          # git add -N 避免在没有实际变化时创建空blob
-          git add "$IMAGE_NAME"
-          if ! git diff --cached --quiet "$IMAGE_NAME"; then
+          # 将当前目录的所有更改添加到暂存区
+          # 这将确保美图.png被添加，即使变量解析有问题
+          git add .
+
+          # 检查暂存区是否有实际变化（文件内容是否与HEAD版本不同）
+          if ! git diff --cached --quiet; then
             git commit -m "chore: Update daily image (美图.png) [skip ci]"
             git push
             echo "美图.png updated and pushed."
           else
-            echo "美图.png has no changes. Skipping commit and push."
+            echo "美图.png has no changes compared to HEAD. Skipping commit and push."
           fi

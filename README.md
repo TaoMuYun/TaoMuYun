@@ -23,6 +23,8 @@
 ### **<a href="https://api.kxzjoker.cn/api/wallhere?type=bs">今日份美图**
 <img style="float: right;" src="https://api.kxzjoker.cn/api/wallhere?type=bs">
 
-<div style="clear: both; height: 1px; background-color: #d0d0d0; margin-top: 1em; margin-bottom: 1em;">&nbsp;</div>
+<div style="clear: both; height: 1em;"></div> <!-- 1. 清除浮动并创建图片下方的1em空白 -->
+
+<h2 style="margin-top: 0; margin-bottom: 1em; color: transparent;">&nbsp;</h2> <!-- 2. 模拟标题下划线，并控制间距 -->
 
 <a href="http://cxk.fan/api.php">小黑子食不食食油饼

@@ -16,6 +16,7 @@
 ## **社交：**
 <div align="center">
 <img src="output.gif">
+</div>
 
 
 -   <img src="Amiya.png" style="height: 18px; width: 18px; border-radius: 50%; margin-right: 6px; object-fit: cover;" /><a href="https://ak.hypergryph.com/">卧槽粥!

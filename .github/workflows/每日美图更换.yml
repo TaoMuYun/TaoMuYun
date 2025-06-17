@@ -29,16 +29,20 @@ jobs:
           # 定义新的cachebuster值
           CACHEBUSTER_VALUE="${{ steps.date.outputs.today }}"
 
-          # 构建完整的替换字符串：BASE_URL + "=" + CACHEBUSTER_VALUE
-          NEW_SRC_VALUE="${BASE_URL_ESCAPED}=${CACHEBUSTER_VALUE}"
-
           # 使用sed命令进行替换
-          # 1. 找到包含 <img style="float: right;" src="BASE_URL..."> 的行
-          # 2. 在这些行上，替换 src="..." 属性的整个值
-          #    - src="BASE_URL_ESCAPED" 匹配固定的基础URL
-          #    - (=[0-9]*)? 匹配可选的 = 和数字时间戳（如果有的话）
-          #    - 替换为 src="NEW_SRC_VALUE"
-          sed -i "/<img style=\"float: right;\" src=\"${BASE_URL_ESCAPED}/s|src=\"${BASE_URL_ESCAPED}(=[0-9]*)?\"|src=\"${NEW_SRC_VALUE}\"|g" README.md
+          # -E 启用扩展正则表达式
+          # 地址匹配：/<img style="float: right;"/ 找到包含图片标签的行
+          # 替换操作：
+          #   s|...|...|g
+          #   匹配模式：(src="${BASE_URL_ESCAPED})(=[0-9]*)?"
+          #     - (src="${BASE_URL_ESCAPED})：捕获组1，匹配 src="https://api.kxzjoker.cn/api/wallhere?type=bs
+          #     - (=[0-9]*)?：可选的捕获组，匹配现有的 = 和时间戳
+          #     - "：匹配结束双引号
+          #   替换模式：\1=${CACHEBUSTER_VALUE}"
+          #     - \1：引用捕获组1的内容 (即 src="https://api.kxzjoker.cn/api/wallhere?type=bs)
+          #     - =${CACHEBUSTER_VALUE}：追加 = 和新的时间戳
+          #     - "：追加结束双引号
+          sed -i -E "/<img style=\"float: right;\"/ { s|(src=\"${BASE_URL_ESCAPED})(=[0-9]*)?\"|\1=${CACHEBUSTER_VALUE}\"|g }" README.md
 
           # 检查是否有更改，如果有，则提交并推送
           if ! git diff --quiet README.md; then

@@ -33,4 +33,6 @@
 
 <div style="clear: both; height: 1em;"></div> 
 
-<a href="http://cxk.fan/api.php">小黑子食不食食油饼
+<div align="right">
+<a href="http://cxk.fan/api.php">小黑子食不食食油饼</a>
+</div>

@@ -23,10 +23,6 @@
 ### **<a href="https://api.kxzjoker.cn/api/wallhere?type=bs">今日份美图**
 <img align="right" src="https://api.kxzjoker.cn/api/wallhere?type=bs">
 
-<div style="clear: both; height: 1em;"></div> <!-- 这一行是关键：清除浮动并创建1em的高度 -->
+<div style="clear: both; padding-top: 1em; border-bottom: 1px solid #eaecef; margin-bottom: 1em;">&nbsp;</div> <!-- 关键：清除浮动，顶部留白，底部边框作为分割线，底部留白，并用&nbsp;确保非空 -->
 
-# 
-
-<!-- 您原来为了推开内容而添加的大量 <br> 标签现在可以全部删除了 -->
-
-<a href="http://cxk.fan/api.php">小黑子食不食油饼
+<a href="http://cxk.fan/api.php">小黑子食不食食油饼

@@ -1,8 +1,7 @@
 # **你是第**
 <img align="float: right" src="https://count.getloli.com/get/@:QcxFlora?theme=rule">
 
-<div style="clear: both; height: 0em;"></div> 
-
+<div style="clear: both; height: 1em; overflow: hidden; font-size: 0; line-height: 0;">&nbsp;</div>
 ## **名看我主页的用户！**
 
 # 普通在读学生—伯希Boxy
@@ -31,7 +30,7 @@
 ### **<a href="https://api.kxzjoker.cn/api/wallhere?type=bs">今日份美图**
 <img style="float: right;" src="美图202506171638.png">
 
-<div style="clear: both; height: 1em;"></div> 
+<div style="clear: both; height: 1em; overflow: hidden; font-size: 0; line-height: 0;">&nbsp;</div>
 
 <div align="right">
 <a href="http://cxk.fan/api.php">小黑子食不食食油饼</a>

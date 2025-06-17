@@ -3,7 +3,6 @@ name: 美图更换 # 工作流名称
 on:
   schedule:
     # 每天 UTC 时间 00:00 运行 (北京时间上午 8:00)
-    # 您可以根据需要调整时间，例如 '0 16 * * *' 表示 UTC 时间下午4点 (北京时间午夜 0:00)
     - cron: '0 0 * * *'
   workflow_dispatch: # 允许手动触发此工作流
 
@@ -36,9 +35,10 @@ jobs:
           # 使用sed命令进行替换
           # 1. 找到包含 <img style="float: right;" src="BASE_URL..."> 的行
           # 2. 在这些行上，替换 src="..." 属性的整个值
-          #    - src="[^"]*" 匹配 src=" 后面跟着任意非双引号字符，直到下一个双引号
+          #    - src="BASE_URL_ESCAPED" 匹配固定的基础URL
+          #    - (=[0-9]*)? 匹配可选的 = 和数字时间戳（如果有的话）
           #    - 替换为 src="NEW_SRC_VALUE"
-          sed -i "/<img style=\"float: right;\" src=\"${BASE_URL_ESCAPED}/s/src=\"[^\"]*\"/src=\"${NEW_SRC_VALUE}\"/" README.md
+          sed -i "/<img style=\"float: right;\" src=\"${BASE_URL_ESCAPED}/s|src=\"${BASE_URL_ESCAPED}(=[0-9]*)?\"|src=\"${NEW_SRC_VALUE}\"|g" README.md
 
           # 检查是否有更改，如果有，则提交并推送
           if ! git diff --quiet README.md; then

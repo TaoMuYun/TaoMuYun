@@ -21,23 +21,24 @@ jobs:
 
       - name: Get current date for cache buster
         id: date
-        # 使用新的语法来设置输出变量
-        run: echo "today=$(date +'%Y%m%d%H%M')" >> $GITHUB_OUTPUT # 精确到分钟，确保每次都不同
+        run: echo "today=$(date +'%Y%m%d%H%M')" >> $GITHUB_OUTPUT
 
       - name: Update README.md with new image URL
         run: |
-          # 定义基础URL部分
-          BASE_URL="https://api.kxzjoker.cn/api/wallhere?type=bs"
-          # 定义一个正则表达式，匹配基础URL和其后直到下一个双引号的所有字符
-          # 这会捕获任何现有的cachebuster或其他参数，确保替换整个URL
-          OLD_URL_REGEX="${BASE_URL}[^\"]*"
-          # 定义新的URL，包含更新的cachebuster
-          NEW_URL="${BASE_URL}&cachebuster=${{ steps.date.outputs.today }}"
+          # 定义基础URL部分，注意转义特殊字符用于sed的正则表达式
+          BASE_URL_ESCAPED="https:\/\/api\.kxzjoker\.cn\/api\/wallhere\?type=bs"
+          # 定义新的cachebuster值
+          CACHEBUSTER_VALUE="${{ steps.date.outputs.today }}"
 
-          # 使用sed命令替换README.md中的图片URL
-          # 's|OLD_REGEX|NEW_URL|g' 表示用NEW_URL替换所有匹配OLD_REGEX的地方
-          # 注意：这里OLD_URL_REGEX是一个正则表达式，它会匹配整个URL，包括旧的cachebuster
-          sed -i "s|${OLD_URL_REGEX}|${NEW_URL}|g" README.md
+          # 构建完整的替换字符串：BASE_URL + "=" + CACHEBUSTER_VALUE
+          NEW_SRC_VALUE="${BASE_URL_ESCAPED}=${CACHEBUSTER_VALUE}"
+
+          # 使用sed命令进行替换
+          # 1. 找到包含 <img style="float: right;" src="BASE_URL..."> 的行
+          # 2. 在这些行上，替换 src="..." 属性的整个值
+          #    - src="[^"]*" 匹配 src=" 后面跟着任意非双引号字符，直到下一个双引号
+          #    - 替换为 src="NEW_SRC_VALUE"
+          sed -i "/<img style=\"float: right;\" src=\"${BASE_URL_ESCAPED}/s/src=\"[^\"]*\"/src=\"${NEW_SRC_VALUE}\"/" README.md
 
           # 检查是否有更改，如果有，则提交并推送
           if ! git diff --quiet README.md; then

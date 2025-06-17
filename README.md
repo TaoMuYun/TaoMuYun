@@ -25,6 +25,6 @@
 
 <div style="clear: both; height: 1em;"></div> <!-- 1. 清除浮动并创建图片下方的1em空白 -->
 
-<h2 style="margin-top: 0; margin-bottom: 1em; color: transparent;">&nbsp;</h2> <!-- 2. 模拟标题下划线，并控制间距 -->
+<h2 style="margin-top: 0; margin-bottom: 1em; color: transparent;">&nbsp;</h2> <!-- 2. 模拟标题下划线，文字透明 -->
 
 <a href="http://cxk.fan/api.php">小黑子食不食食油饼

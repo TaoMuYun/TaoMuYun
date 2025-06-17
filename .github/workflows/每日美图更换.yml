@@ -1,4 +1,4 @@
-name: 美图更换 # 工作流名称
+name: 每日美图更换 # 工作流名称
 
 on:
   schedule:
@@ -18,40 +18,37 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Get current date for cache buster
-        id: date
-        run: echo "today=$(date +'%Y%m%d%H%M')" >> $GITHUB_OUTPUT
-
-      - name: Update README.md with new image URL
+      - name: Download and save image
         run: |
-          # 定义基础URL部分，注意转义特殊字符用于sed的正则表达式
-          BASE_URL_ESCAPED="https:\/\/api\.kxzjoker\.cn\/api\/wallhere\?type=bs"
-          # 定义新的cachebuster值
-          CACHEBUSTER_VALUE="${{ steps.date.outputs.today }}"
+          IMAGE_URL="https://api.kxzjoker.cn/api/wallhere?type=bs"
+          IMAGE_NAME="美图.png" # 定义图片名称
 
-          # 使用sed命令进行替换
-          # -E 启用扩展正则表达式
-          # 地址匹配：/<img style="float: right;"/ 找到包含图片标签的行
-          # 替换操作：
-          #   s|...|...|g
-          #   匹配模式：(src="${BASE_URL_ESCAPED})(=[0-9]*)?"
-          #     - (src="${BASE_URL_ESCAPED})：捕获组1，匹配 src="https://api.kxzjoker.cn/api/wallhere?type=bs
-          #     - (=[0-9]*)?：可选的捕获组，匹配现有的 = 和时间戳
-          #     - "：匹配结束双引号
-          #   替换模式：\1=${CACHEBUSTER_VALUE}"
-          #     - \1：引用捕获组1的内容 (即 src="https://api.kxzjoker.cn/api/wallhere?type=bs)
-          #     - =${CACHEBUSTER_VALUE}：追加 = 和新的时间戳
-          #     - "：追加结束双引号
-          sed -i -E "/<img style=\"float: right;\"/ { s|(src=\"${BASE_URL_ESCAPED})(=[0-9]*)?\"|\1=${CACHEBUSTER_VALUE}\"|g }" README.md
+          # 使用 curl 下载图片，并保存为指定名称
+          # -s 静默模式，不显示进度或错误信息
+          # -L 遵循重定向
+          # -o 指定输出文件名
+          curl -s -L -o "$IMAGE_NAME" "$IMAGE_URL"
 
-          # 检查是否有更改，如果有，则提交并推送
-          if ! git diff --quiet README.md; then
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add README.md
-            git commit -m "chore: Update daily image URL in README.md [skip ci]"
+          # 检查图片是否成功下载
+          if [ ! -f "$IMAGE_NAME" ]; then
+            echo "Error: Image download failed."
+            exit 1
+          fi
+          echo "Image downloaded successfully as $IMAGE_NAME."
+
+      - name: Commit and push image
+        run: |
+          # 配置 Git 用户信息
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # 检查文件是否有变化，如果有，则提交并推送
+          # git add -N 避免在没有实际变化时创建空blob
+          git add "$IMAGE_NAME"
+          if ! git diff --cached --quiet "$IMAGE_NAME"; then
+            git commit -m "chore: Update daily image (美图.png) [skip ci]"
             git push
-            echo "README.md updated and pushed."
+            echo "美图.png updated and pushed."
           else
-            echo "No changes to README.md. Skipping commit and push."
+            echo "美图.png has no changes. Skipping commit and push."
           fi

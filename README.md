@@ -1,7 +1,7 @@
 # **你是第**
 <img align="float: right" src="https://count.getloli.com/get/@:QcxFlora?theme=rule">
 
-<div style="clear: both;"></div> 
+<div style="clear: both; height: 0; overflow: hidden; margin: 0; padding: 0;"></div> 
 
 ## **名看我主页的用户！**
 

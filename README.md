@@ -30,6 +30,6 @@
 <a href="https://v2.api-m.com/api/meinv?return=302">小姐姐~<br>
 ### **<a href="https://api.kxzjoker.cn/api/wallhere?type=bs">今日份美图**
 <img style="float: right;" src="美图202506171638.png">
-<div style="display: inline-block; height: 1em; overflow: hidden; font-size: 0; line-height: 0; margin: 0; padding: 0;">&nbsp;</div>
+<div style="clear: both; height: 0; overflow: hidden; margin: 0; padding: 0;"></div>
 
 <div align="right"><a href="http://cxk.fan/api.php">小黑子食不食食油饼</a></div>

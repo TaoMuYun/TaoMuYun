@@ -1,5 +1,5 @@
 # **你是第**
-<img align="right" src="https://count.getloli.com/get/@:QcxFlora?theme=rule">
+<img align="float" src="https://count.getloli.com/get/@:QcxFlora?theme=rule">
 <div style="clear: both; height: 0em;"></div> 
 
 ## **名看我主页的用户！**

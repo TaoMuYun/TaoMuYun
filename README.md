@@ -1,5 +1,5 @@
 # **你是第**
-<img align="left" src="https://count.getloli.com/get/@:QcxFlora?theme=rule">
+<img align="float: right" src="https://count.getloli.com/get/@:QcxFlora?theme=rule">
 
 <div style="clear: both; height: 0em;"></div> 
 
@@ -28,7 +28,7 @@
 ## **看看视频**
 <a href="https://v2.api-m.com/api/meinv?return=302">小姐姐~<br>
 ### **<a href="https://api.kxzjoker.cn/api/wallhere?type=bs">今日份美图**
-<img style="float: center;" src="美图202506171638.png">
+<img style="float: right;" src="美图202506171638.png">
 
 <div style="clear: both; height: 0em;"></div> 
 

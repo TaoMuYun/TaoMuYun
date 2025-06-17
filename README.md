@@ -23,10 +23,10 @@
 ### **<a href="https://api.kxzjoker.cn/api/wallhere?type=bs">今日份美图**
 <img align="right" src="https://api.kxzjoker.cn/api/wallhere?type=bs">
 
-<div style="clear: both;"></div> 
+<div style="clear: both; height: 1em;"></div> <!-- 这一行是关键：清除浮动并创建1em的高度 -->
 
-<hr style="margin-top: 1em;"> 
+--- <!-- 这将是您的分割线 -->
 
-
+<!-- 您原来为了推开内容而添加的大量 <br> 标签现在可以全部删除了 -->
 
 <a href="http://cxk.fan/api.php">小黑子食不食油饼

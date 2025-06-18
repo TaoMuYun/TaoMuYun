@@ -22,7 +22,7 @@
 -   <img src="Amiya.png" style="height: 18px; width: 18px; margin-right: 6px;" /><a href="https://t.me/TaoMuYun">我的tg
    ><img src="TuTu.png" style="height: 18px; width: 18px; margin-right: 6px;" />TaoMuYun
 -   <img src="QQ.png" style="height: 18px; width: 18px; margin-right: 6px;" /><a href="https://qm.qq.com/q/uWyj3g6s9O">我的QQ
-   ><img src="https://avatars.githubusercontent.com/u/197634234?v=4" style="height: 18px; width: 18px; margin-right: 6px;" />3132186515
+   ><img src="QQ.png" style="height: 18px; width: 18px; margin-right: 6px;" />3132186515
 -   <img src="a.png" style="height: 18px; width: 18px; margin-right: 6px;" /><a href="">我的微信
    ><img src="vx.png" style="height: 180px; width: 180px; margin-right: 60px;" />
 

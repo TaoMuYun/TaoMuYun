@@ -19,8 +19,8 @@
 </div>
 
 
--   <img src="Amiya.png" style="height: 18px; width: 18px; margin-right: 6px;" /><a href="https://ak.hypergryph.com/">卧槽粥!
-   ><img src="TuTu.png" style="height: 18px; width: 18px; margin-right: 6px;" />UID:585991431
+-   <img src="Amiya.png" style="height: 18px; width: 18px; margin-right: 6px;" /><a href="https://t.me/TaoMuYun">tg
+   ><img src="TuTu.png" style="height: 18px; width: 18px; margin-right: 6px;" />https://t.me/TaoMuYun
 -   <img src="QQ.png" style="height: 18px; width: 18px; margin-right: 6px;" /><a href="https://qm.qq.com/q/J3ZFM6Snee">我的QQ
    ><img src="https://avatars.githubusercontent.com/u/197634234?v=4" style="height: 18px; width: 18px; margin-right: 6px;" />3445594408
 -   <img src="wyyyx.png" style="height: 18px; width: 18px; margin-right: 6px;" /><a href="mailto:boxy2699@163.com">我的邮箱

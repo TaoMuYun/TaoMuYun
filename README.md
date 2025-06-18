@@ -1,5 +1,5 @@
 # **你是第**
-<img align="float: right" src="https://count.getloli.com/get/@:QcxFlora?theme=rule">
+<img align="float: right" src="https://count.getloli.com/get/@:TaoMuYun?theme=rule">
 
 <div style="clear: both; height: 0; overflow: hidden; margin: 0; padding: 0;"></div> 
 
@@ -19,7 +19,7 @@
 </div>
 
 
--   <img src="Amiya.png" style="height: 18px; width: 18px; margin-right: 6px;" /><a href="https://t.me/TaoMuYun">我的tg
+-   <img src="Tg.png" style="height: 18px; width: 18px; margin-right: 6px;" /><a href="https://t.me/TaoMuYun">我的tg
    ><img src="TgT.png" style="height: 18px; width: 18px; margin-right: 6px;" />TaoMuYun
 -   <img src="QQ.png" style="height: 18px; width: 18px; margin-right: 6px;" /><a href="https://qm.qq.com/q/uWyj3g6s9O">我的QQ
    ><img src="QT.png" style="height: 18px; width: 18px; margin-right: 6px;" />3132186515

@@ -5,9 +5,9 @@
 
 ## **名看我主页的用户！**
 
-# 普通在读学生—伯希Boxy
+# 究极社恐患者—桃暮芸
 
-热爱绘画🎨、热爱折腾🔧。学习经验15年。喜欢参与一些开源项目的讨论。
+热爱#*“？”、热爱《.·[·》。=「[「经验＃「「＃年。喜欢参与一些开源项目的讨论。
 
 ## 擅长的开发语言：
 
@@ -23,7 +23,7 @@
    ><img src="TuTu.png" style="height: 18px; width: 18px; margin-right: 6px;" />https://t.me/TaoMuYun
 -   <img src="QQ.png" style="height: 18px; width: 18px; margin-right: 6px;" /><a href="https://qm.qq.com/q/J3ZFM6Snee">我的QQ
    ><img src="https://avatars.githubusercontent.com/u/197634234?v=4" style="height: 18px; width: 18px; margin-right: 6px;" />3445594408
--   <img src="wyyyx.png" style="height: 18px; width: 18px; margin-right: 6px;" /><a href="mailto:boxy2699@163.com">我的邮箱
+-   <img src="wyyyx.png" style="height: 18px; width: 18px; margin-right: 6px;" /><a href="">微信
    ><img src="https://avatars.githubusercontent.com/u/197634234?v=4" style="height: 18px; width: 18px; margin-right: 6px;" />boxy2699@163.com
 
 ## **看看视频**
